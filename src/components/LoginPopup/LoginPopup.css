@@ -1,0 +1,151 @@
+/* .login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 35, 28, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  width: 90%;
+  max-width: 360px;
+}
+
+.login-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-box-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-charcoal);
+}
+
+.login-close {
+  cursor: pointer;
+  color: var(--color-muted);
+}
+
+.login-placeholder-note {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-top: 16px;
+} */
+
+
+.login-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.login-box{
+    width:420px;
+    background:#fff;
+    border-radius:18px;
+     padding:30px;
+    animation:popup .3s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.login-box-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.login-box-header h2{
+    font-size:30px;
+    font-weight:700;
+}
+
+.login-close{
+    cursor:pointer;
+}
+
+.login-form{
+ display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.login-form input{
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+.login-form input:focus{
+    border-color:tomato;
+}
+
+.login-form button{
+    padding:14px;
+    background:tomato;
+    color:#ffff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.login-form button:hover{
+    background:#e34b2d;
+}
+
+.login-checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-top:18px;
+    font-size:14px;
+    color:#666;
+}
+
+.login-switch{
+    text-align:center;
+    margin-top:20px;
+}
+
+.login-switch span{
+    color:tomato;
+    font-weight:600;
+    cursor:pointer;
+    margin-left:6px;
+}
+
+@media(max-width:500px){
+
+.login-box{
+    width:90%;
+    padding:20px;
+}
+
+}

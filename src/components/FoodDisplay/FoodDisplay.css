@@ -1,0 +1,65 @@
+.food-display {
+  margin-top:10px;
+  padding:10px 6vw;
+}
+
+
+/* Title */
+
+.food-display h2 {
+  font-size:clamp(24px, 3vw, 34px);
+  font-weight:800;
+  color:#262626;
+  margin-bottom:30px;
+}
+
+
+
+/* Food Cards Grid */
+
+.food-display-list {
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fill, minmax(240px, 1fr));
+  gap:30px;
+  row-gap:40px;
+}
+
+
+
+/* Tablet */
+
+@media(max-width:900px){
+  .food-display{
+    padding:30px 25px;
+  }
+
+
+  .food-display-list{
+    grid-template-columns:
+    repeat(2,1fr);
+    gap:25px;
+  }
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+  .food-display{
+    padding:25px 15px;
+  }
+
+
+  .food-display h2{
+    font-size:24px;
+  }
+
+
+  .food-display-list{
+    grid-template-columns:1fr;
+  }
+
+}

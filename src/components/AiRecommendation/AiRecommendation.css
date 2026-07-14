@@ -1,0 +1,253 @@
+.ai-recommendation {
+  margin: 20px auto;
+  padding: 35px;
+  max-width: 1200px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    #fff5f2,
+    #ffffff
+  );
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+
+/* Header */
+
+.ai-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.ai-header h2 {
+  font-size: clamp(24px,3vw,36px);
+  font-weight: 700;
+  color: #222;
+}
+
+
+.ai-header span {
+  color: #ff5200;
+}
+
+
+.ai-header p {
+  color:#666;
+  margin-top:10px;
+  font-size:15px;
+}
+
+
+/* Search Box */
+
+.ai-search-box {
+
+  display:flex;
+  max-width:650px;
+  margin:auto;
+
+  background:white;
+
+  border-radius:50px;
+
+  padding:8px;
+
+  box-shadow:
+  0 5px 20px rgba(0,0,0,0.12);
+
+}
+
+
+.ai-search-box input{
+
+ flex:1;
+
+ border:none;
+
+ outline:none;
+
+ padding:14px 20px;
+
+ font-size:15px;
+
+ border-radius:50px;
+
+}
+
+
+.ai-search-box button{
+
+ border:none;
+
+ background:#ff5200;
+
+ color:white;
+
+ padding:14px 28px;
+
+ border-radius:50px;
+
+ cursor:pointer;
+
+ font-weight:600;
+
+ transition:.3s;
+
+}
+
+
+.ai-search-box button:hover{
+
+ background:#e64500;
+
+ transform:translateY(-2px);
+
+}
+
+
+/* Suggestions */
+
+
+.ai-suggestions{
+
+ display:flex;
+
+ justify-content:center;
+
+ flex-wrap:wrap;
+
+ gap:12px;
+
+ margin-top:25px;
+
+}
+
+
+.ai-suggestions button{
+
+ background:#fff;
+
+ border:1px solid #eee;
+
+ padding:8px 18px;
+
+ border-radius:20px;
+
+ cursor:pointer;
+
+ color:#555;
+
+ transition:.3s;
+
+}
+
+
+.ai-suggestions button:hover{
+
+ background:#ff5200;
+
+ color:white;
+
+ border-color:#ff5200;
+
+}
+
+
+
+/* Result */
+
+.ai-result{
+
+ margin-top:40px;
+
+}
+
+
+.ai-result h3{
+
+ font-size:24px;
+
+ margin-bottom:25px;
+
+ color:#222;
+
+}
+
+
+
+/* Food Cards */
+
+.ai-food-grid{
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(auto-fill,minmax(220px,1fr));
+
+ gap:25px;
+
+}
+
+
+
+/* Loading */
+
+.ai-loading{
+
+ text-align:center;
+
+ margin-top:25px;
+
+ color:#ff5200;
+
+ font-weight:600;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+ .ai-recommendation{
+
+ padding:20px;
+
+ margin:35px 15px;
+
+ }
+
+
+ .ai-search-box{
+
+ flex-direction:column;
+
+ background:transparent;
+
+ box-shadow:none;
+
+ gap:12px;
+
+ }
+
+
+ .ai-search-box input{
+
+ background:white;
+
+ box-shadow:
+ 0 5px 15px rgba(0,0,0,.1);
+
+ }
+
+
+ .ai-search-box button{
+
+ width:100%;
+
+ }
+
+
+}
