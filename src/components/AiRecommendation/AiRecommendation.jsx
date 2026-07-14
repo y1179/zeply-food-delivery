@@ -109,7 +109,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { StoreContext } from "../../context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
-import "./AIRecommendation.css";
+import "./AiRecommendation.css";
 
 
 const AIRecommendation = () => {
