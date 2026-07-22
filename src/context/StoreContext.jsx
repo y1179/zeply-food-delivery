@@ -238,7 +238,7 @@ const StoreContextProvider = ({ children }) => {
   }, []);
 
   const contextValue = {
-    url,          // 👈 exposed so every component can use it
+    url,        
     food_list: foodList,
     cartItems,
     setCartItems,
