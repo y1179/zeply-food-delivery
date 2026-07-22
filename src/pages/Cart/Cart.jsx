@@ -27,6 +27,7 @@ const Cart = () => {
     addToCart,
     removeFromCart,
     getTotalCartAmount,
+    url,
   } = useContext(StoreContext);
 
   const placeOrder = async () => {
@@ -127,31 +128,25 @@ const Cart = () => {
             return (
               <div key={item._id}>
                 <div className="cart-items-title cart-item">
-                  <img src={item.image} alt={item.name} />
+                  <img src={`${url}/images/${item.image}`} alt={item.name} />
 
                   <p>{item.name}</p>
 
                   <p>₹{item.price}</p>
 
                   <div className="cart-qty">
-                    <button
-                      onClick={() => removeFromCart(item._id)}
-                    >
+                    <button onClick={() => removeFromCart(item._id)}>
                       -
                     </button>
 
                     <span>{cartItems[item._id]}</span>
 
-                    <button
-                      onClick={() => addToCart(item._id)}
-                    >
+                    <button onClick={() => addToCart(item._id)}>
                       +
                     </button>
                   </div>
 
-                  <p>
-                    ₹{item.price * cartItems[item._id]}
-                  </p>
+                  <p>₹{item.price * cartItems[item._id]}</p>
 
                   <p
                     className="remove-item"
@@ -177,7 +172,6 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-
               <p>₹{getTotalCartAmount()}</p>
             </div>
 
@@ -185,30 +179,20 @@ const Cart = () => {
 
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-
-              <p>
-                ₹{getTotalCartAmount() === 0 ? 0 : 40}
-              </p>
+              <p>₹{getTotalCartAmount() === 0 ? 0 : 40}</p>
             </div>
 
             <hr />
 
             <div className="cart-total-details">
               <b>Total</b>
-
               <b>
-                ₹
-                {getTotalCartAmount() === 0
-                  ? 0
-                  : getTotalCartAmount() + 40}
+                ₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 40}
               </b>
             </div>
           </div>
 
-          <button
-            onClick={placeOrder}
-            disabled={getTotalCartAmount() === 0}
-          >
+          <button onClick={placeOrder} disabled={getTotalCartAmount() === 0}>
             Proceed To Payment
           </button>
         </div>

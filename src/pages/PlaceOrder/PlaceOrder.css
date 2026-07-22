@@ -1,14 +1,115 @@
-.place-order-stub {
-  padding: 48px 24px;
-  min-height: 40vh;
+.place-order {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 100px;
+  margin-top: 100px;
+  padding: 0 4vw;
 }
 
-.place-order-stub h1 {
+.place-order-left {
+  width: 100%;
+  max-width: max(30%, 500px);
+}
+
+.place-order .title {
   font-size: 24px;
-  color: var(--color-charcoal);
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #2b231c;
 }
 
-.place-order-note {
-  color: var(--color-muted);
-  font-size: 13px;
+.place-order input {
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c5c5c5;
+  border-radius: 4px;
+  outline-color: #ff5200;
+  font-size: 14px;
+  color: #2b231c;
+}
+
+.place-order input::placeholder {
+  color: #8a7a68;
+}
+
+.place-order .multi-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.place-order-right {
+  width: 100%;
+  max-width: max(40%, 400px);
+}
+
+.place-order-right .cart-total {
+  background: #fff9f2;
+  border: 1px solid #ede1d3;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.place-order-right .cart-total h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #2b231c;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  color: #5c4f41;
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.cart-total-details b {
+  color: #2b231c;
+  font-size: 16px;
+}
+
+.place-order-right hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #ede1d3;
+}
+
+.place-order-right button {
+  width: 100%;
+  background: #ff5200;
+  color: white;
+  border: none;
+  padding: 14px 0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.place-order-right button:hover {
+  background: #e04700;
+}
+
+.place-order-right button:disabled {
+  background: #d9d0c4;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .place-order {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .place-order-left,
+  .place-order-right {
+    max-width: 100%;
+  }
 }
