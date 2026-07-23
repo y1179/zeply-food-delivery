@@ -699,7 +699,10 @@ export default function Navbar({ setShowLogin }) {
             >
               Menu
             </Link>
-
+            <Link to="/myorders" className="navbar-myorders">
+              <img src={assets.parcel_icon} alt="My Orders" />
+              <span>My Orders</span>
+            </Link>
             <Link
               to="/#app-download"
               onClick={() => setMenu("app")}

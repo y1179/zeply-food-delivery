@@ -836,12 +836,30 @@
     outline:none;
     margin-left:10px;
 }
+.navbar-myorders {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2b231c;
+  text-decoration: none;
+}
 
+.navbar-myorders img {
+  width: 18px;
+  height: 18px;
+}
+
+.navbar-myorders:hover {
+  color: #ff5200;
+}
 @media(max-width:992px){
 
     .navbar-search,
     .navbar-links,
     .navbar-actions,
+    .navbar-myorders,
     .navbar-location{
         display:none;
     }
@@ -858,3 +876,4 @@
         background:white;
     }
 }
+
