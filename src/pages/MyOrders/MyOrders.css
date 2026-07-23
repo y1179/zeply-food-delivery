@@ -1,0 +1,98 @@
+.my-orders {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.my-orders h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2b231c;
+  margin-bottom: 24px;
+}
+
+.no-orders {
+  color: #8a7a68;
+  font-size: 14px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-card {
+  background: #fff9f2;
+  border: 1px solid #ede1d3;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-id {
+  font-weight: 700;
+  color: #2b231c;
+  font-size: 14px;
+}
+
+.order-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.order-status.paid {
+  background: #e9f6ee;
+  color: #2b7a4b;
+}
+
+.order-status.unpaid {
+  background: #fdeceb;
+  color: #b5453a;
+}
+
+.order-items {
+  font-size: 13px;
+  color: #5c4f41;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.order-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ede1d3;
+  padding-top: 12px;
+  font-size: 13px;
+}
+
+.order-date {
+  color: #8a7a68;
+}
+
+.order-amount {
+  font-weight: 700;
+  color: #2b231c;
+}
+
+.order-food-status {
+  color: #ff5200;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .order-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

@@ -68,6 +68,7 @@ import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
+import MyOrders from "./pages/MyOrders/MyOrders";
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -84,6 +85,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<PlaceOrder />} />
+        <Route path="/myorders" element={<MyOrders />} />
       </Routes>
 
       <Footer />

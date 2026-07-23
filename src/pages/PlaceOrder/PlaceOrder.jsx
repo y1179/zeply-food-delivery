@@ -336,11 +336,16 @@ const PlaceOrder = () => {
         items: orderItems,
         amount: getTotalCartAmount() + 40,
       };
+       
+
+      console.log("Token:", token);
+console.log("URL:", `${url}/api/order/place`);
+console.log("Order Data:", orderData);
 
       const response = await axios.post(`${url}/api/order/place`, orderData, {
         headers: { token },
       });
-
+      console.log("Backend Response:", response.data);
       if (!response.data.success) {
         alert("Failed to create order");
         return;
@@ -395,15 +400,17 @@ const PlaceOrder = () => {
 
         theme: { color: "#ff5200" },
       };
-
+      console.log("Creating Razorpay...");
       const razorpay = new window.Razorpay(options);
 
+      console.log("Razorpay Instance:", razorpay);
       razorpay.on("payment.failed", function (response) {
         console.log(response.error);
         alert(response.error.description);
       });
-
+      console.log("Calling razorpay.open()");
       razorpay.open();
+      console.log("After razorpay.open()")
     } catch (error) {
       console.log(error);
       if (error.response) console.log(error.response.data);
