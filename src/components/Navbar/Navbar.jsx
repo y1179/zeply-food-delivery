@@ -601,7 +601,7 @@ export default function Navbar({ setShowLogin }) {
             />
 
             <div>
-              <h2 className="navbar-logo-text">Zeply</h2>
+              <h2 className="navbar-logo-text">CraveOn</h2>
               <p className="navbar-logo-subtitle">
                 Food Delivery
               </p>
