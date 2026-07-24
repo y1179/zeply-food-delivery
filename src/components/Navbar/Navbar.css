@@ -577,7 +577,7 @@
 
 .navbar-logo-text{
     color:#fc8019;
-    font-size:30px;
+    font-size:25px;
     font-weight:800;
     margin:0;
 }
@@ -684,7 +684,7 @@
 
 .navbar-links{
     display:flex;
-    gap:25px;
+    gap:10px;
 }
 
 .nav-link{
