@@ -584,10 +584,10 @@ export default function Navbar({ setShowLogin }) {
 
   return (
     <>
-      <div className="promo-strip">
+      {/* <div className="promo-strip">
         <Percent size={14} />
         Free Delivery on Orders Above ₹149
-      </div>
+      </div> */}
 
       <header className="navbar">
         <div className="app-container navbar-inner">
