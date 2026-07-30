@@ -524,8 +524,340 @@
 
 
 
+// import { useState, useRef, useEffect, useContext } from "react";
+// import { Link } from "react-router-dom";
+// import {
+//   Search,
+//   MapPin,
+//   ChevronDown,
+//   ShoppingBag,
+//   User,
+//   Menu,
+//   X,
+//   Percent,
+// } from "lucide-react";
+
+// import "./Navbar.css";
+// import { assets } from "../../assets/assets";
+// import { StoreContext } from "../../context/StoreContext";
+
+// export default function Navbar({ setShowLogin }) {
+//   const [locationOpen, setLocationOpen] = useState(false);
+//   const [mobileOpen, setMobileOpen] = useState(false);
+//   const [menu, setMenu] = useState("home");
+//   const [address, setAddress] = useState("Bandra West, Mumbai");
+
+//   const { token, setToken, cartItems } = useContext(StoreContext);
+
+//   const locRef = useRef(null);
+
+//   const cartCount = Object.values(cartItems).reduce(
+//     (total, qty) => total + qty,
+//     0
+//   );
+
+//   const logout = () => {
+//     localStorage.removeItem("token");
+//     setToken("");
+//     setMobileOpen(false);
+//   };
+
+//   useEffect(() => {
+//     function handleClick(e) {
+//       if (locRef.current && !locRef.current.contains(e.target)) {
+//         setLocationOpen(false);
+//       }
+//     }
+
+//     document.addEventListener("mousedown", handleClick);
+
+//     return () =>
+//       document.removeEventListener("mousedown", handleClick);
+//   }, []);
+
+//   const addresses = [
+//     "Bandra West, Mumbai",
+//     "Andheri East, Mumbai",
+//     "Powai, Mumbai",
+//     "Use current location",
+//   ];
+
+//   return (
+//     <>
+//       {/* <div className="promo-strip">
+//         <Percent size={14} />
+//         Free Delivery on Orders Above ₹149
+//       </div> */}
+
+//       <header className="navbar">
+//         <div className="app-container navbar-inner">
+//           {/* Logo */}
+
+//           <Link to="/" className="navbar-brand">
+//             <img
+//               src={assets.logo}
+//               alt="Logo"
+//               className="navbar-logo"
+//             />
+
+//             <div>
+//               <h2 className="navbar-logo-text">CraveOn</h2>
+//               <p className="navbar-logo-subtitle">
+//                 Food Delivery
+//               </p>
+//             </div>
+//           </Link>
+
+//           {/* Location */}
+
+//           <div
+//             className="navbar-location"
+//             ref={locRef}
+//           >
+//             <button
+//               className="location-btn"
+//               onClick={() =>
+//                 setLocationOpen(!locationOpen)
+//               }
+//             >
+//               <MapPin
+//                 size={18}
+//                 color="#ff5200"
+//               />
+
+//               <div className="location-text">
+//                 <span className="location-label">
+//                   Delivering To
+//                 </span>
+
+//                 <div className="location-value">
+//                   {address}
+
+//                   <ChevronDown
+//                     size={15}
+//                     className={
+//                       locationOpen ? "rotate" : ""
+//                     }
+//                   />
+//                 </div>
+//               </div>
+//             </button>
+
+//             {locationOpen && (
+//               <div className="location-dropdown">
+//                 {addresses.map((item) => (
+//                   <button
+//                     key={item}
+//                     className="location-option"
+//                     onClick={() => {
+//                       setAddress(item);
+//                       setLocationOpen(false);
+//                     }}
+//                   >
+//                     <MapPin size={16} />
+//                     {item}
+//                   </button>
+//                 ))}
+//               </div>
+//             )}
+//           </div>
+
+//           {/* Search */}
+
+//           <div className="navbar-search">
+//             <Search size={18} />
+
+//             <input
+//               type="text"
+//               placeholder="Search restaurants..."
+//             />
+//           </div>
+
+//           {/* Navigation */}
+
+//           <nav className="navbar-links">
+//             <Link
+//               to="/"
+//               onClick={() => setMenu("home")}
+//               className={
+//                 menu === "home"
+//                   ? "nav-link active"
+//                   : "nav-link"
+//               }
+//             >
+//               Home
+//             </Link>
+
+//             <Link
+//               to="/#explore-menu"
+//               onClick={() => setMenu("menu")}
+//               className={
+//                 menu === "menu"
+//                   ? "nav-link active"
+//                   : "nav-link"
+//               }
+//             >
+//               Menu
+//             </Link>
+//             <Link to="/myorders" className="navbar-myorders">
+//               <span>My Orders</span>
+//             </Link>
+//             <Link
+//               to="/#app-download"
+//               onClick={() => setMenu("app")}
+//               className={
+//                 menu === "app"
+//                   ? "nav-link active"
+//                   : "nav-link"
+//               }
+//             >
+//               Mobile App
+//             </Link>
+
+//             <Link
+//               to="/#footer"
+//               onClick={() => setMenu("contact")}
+//               className={
+//                 menu === "contact"
+//                   ? "nav-link active"
+//                   : "nav-link"
+//               }
+//             >
+//               Contact
+//             </Link>
+//           </nav>
+
+//           {/* Desktop Actions */}
+
+//           <div className="navbar-actions">
+//             {!token ? (
+//               <button
+//                 className="login-btn"
+//                 onClick={() => setShowLogin(true)}
+//               >
+//                 <User size={17} />
+//                 Login
+//               </button>
+//             ) : (
+//               <div className="navbar-profile">
+//                 <img
+//                   src={assets.profile_icon}
+//                   alt="Profile"
+//                 />
+
+//                 <ul className="profile-dropdown">
+//                   <li>
+//                     <img
+//                       src={assets.bag_icon}
+//                       alt=""
+//                     />
+//                     Orders
+//                   </li>
+
+//                   <hr />
+
+//                   <li onClick={logout}>
+//                     <img
+//                       src={assets.logout_icon}
+//                       alt=""
+//                     />
+//                     Logout
+//                   </li>
+//                 </ul>
+//               </div>
+//             )}
+
+//             <Link
+//               to="/cart"
+//               className="cart-btn"
+//             >
+//               <ShoppingBag size={18} />
+//               Cart
+
+//               {cartCount > 0 && (
+//                 <span className="cart-badge">
+//                   {cartCount}
+//                 </span>
+//               )}
+//             </Link>
+//           </div>
+
+//           {/* Mobile Toggle */}
+
+//           <button
+//             className="mobile-toggle"
+//             onClick={() =>
+//               setMobileOpen(!mobileOpen)
+//             }
+//           >
+//             {mobileOpen ? (
+//               <X size={22} />
+//             ) : (
+//               <Menu size={22} />
+//             )}
+//           </button>
+//         </div>
+
+//         {/* Mobile Menu */}
+
+//         {mobileOpen && (
+//           <div className="mobile-panel">
+//             <div className="mobile-search">
+//               <Search size={18} />
+//               <input placeholder="Search Food..." />
+//             </div>
+
+//             <Link
+//               to="/"
+//               className="nav-link"
+//             >
+//               Home
+//             </Link>
+
+//             <Link
+//               to="/cart"
+//               className="nav-link"
+//             >
+//               Cart ({cartCount})
+//             </Link>
+
+//             {!token ? (
+//               <button
+//                 className="login-btn"
+//                 onClick={() => {
+//                   setShowLogin(true);
+//                   setMobileOpen(false);
+//                 }}
+//               >
+//                 Login
+//               </button>
+//             ) : (
+//               <>
+//                 <button className="login-btn">
+//                   Orders
+//                 </button>
+
+//                 <button
+//                   className="login-btn"
+//                   onClick={logout}
+//                 >
+//                   Logout
+//                 </button>
+//               </>
+//             )}
+//           </div>
+//         )}
+//       </header>
+//     </>
+//   );
+// }
+
+
+
 import { useState, useRef, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+
 import {
   Search,
   MapPin,
@@ -534,7 +866,6 @@ import {
   User,
   Menu,
   X,
-  Percent,
 } from "lucide-react";
 
 import "./Navbar.css";
@@ -544,15 +875,19 @@ import { StoreContext } from "../../context/StoreContext";
 export default function Navbar({ setShowLogin }) {
   const [locationOpen, setLocationOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [menu, setMenu] = useState("home");
-  const [address, setAddress] = useState("Bandra West, Mumbai");
+  const [search, setSearch] = useState("");
 
-  const { token, setToken, cartItems } = useContext(StoreContext);
+  const [address, setAddress] = useState(
+    "Bhilai, Chhattisgarh"
+  );
+
+  const { token, setToken, cartItems } =
+    useContext(StoreContext);
 
   const locRef = useRef(null);
 
   const cartCount = Object.values(cartItems).reduce(
-    (total, qty) => total + qty,
+    (sum, qty) => sum + qty,
     0
   );
 
@@ -563,291 +898,406 @@ export default function Navbar({ setShowLogin }) {
   };
 
   useEffect(() => {
-    function handleClick(e) {
-      if (locRef.current && !locRef.current.contains(e.target)) {
+    const handleClickOutside = (e) => {
+      if (
+        locRef.current &&
+        !locRef.current.contains(e.target)
+      ) {
         setLocationOpen(false);
       }
-    }
+    };
 
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener(
+      "mousedown",
+      handleClickOutside
+    );
 
     return () =>
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      );
   }, []);
 
   const addresses = [
-    "Bandra West, Mumbai",
-    "Andheri East, Mumbai",
-    "Powai, Mumbai",
-    "Use current location",
+    "Bhilai, Chhattisgarh",
+    "Raipur, Chhattisgarh",
+    "Durg, Chhattisgarh",
+    "Use Current Location",
   ];
 
   return (
-    <>
-      {/* <div className="promo-strip">
-        <Percent size={14} />
-        Free Delivery on Orders Above ₹149
-      </div> */}
+    <header className="navbar">
 
-      <header className="navbar">
-        <div className="app-container navbar-inner">
-          {/* Logo */}
+      <div className="app-container navbar-inner">
 
-          <Link to="/" className="navbar-brand">
-            <img
-              src={assets.logo}
-              alt="Logo"
-              className="navbar-logo"
+        {/* Logo */}
+
+        <NavLink
+          to="/"
+          className="navbar-brand"
+        >
+          <img
+            src={assets.logo}
+            alt="CraveOn"
+            className="navbar-logo"
+          />
+
+          <div>
+            <h2 className="navbar-logo-text">
+              CraveOn
+            </h2>
+
+            <p className="navbar-logo-subtitle">
+              Food Delivery
+            </p>
+          </div>
+        </NavLink>
+
+        {/* Location */}
+
+        <div
+          className="navbar-location"
+          ref={locRef}
+        >
+          <button
+            className="location-btn"
+            onClick={() =>
+              setLocationOpen(!locationOpen)
+            }
+          >
+            <MapPin
+              size={18}
+              color="#ff5200"
             />
 
-            <div>
-              <h2 className="navbar-logo-text">CraveOn</h2>
-              <p className="navbar-logo-subtitle">
-                Food Delivery
-              </p>
-            </div>
-          </Link>
+            <div className="location-text">
+              <span className="location-label">
+                Delivering To
+              </span>
 
-          {/* Location */}
+              <div className="location-value">
+                {address}
 
-          <div
-            className="navbar-location"
-            ref={locRef}
-          >
-            <button
-              className="location-btn"
-              onClick={() =>
-                setLocationOpen(!locationOpen)
-              }
-            >
-              <MapPin
-                size={18}
-                color="#ff5200"
-              />
-
-              <div className="location-text">
-                <span className="location-label">
-                  Delivering To
-                </span>
-
-                <div className="location-value">
-                  {address}
-
-                  <ChevronDown
-                    size={15}
-                    className={
-                      locationOpen ? "rotate" : ""
-                    }
-                  />
-                </div>
+                <ChevronDown
+                  size={16}
+                  className={
+                    locationOpen
+                      ? "rotate"
+                      : ""
+                  }
+                />
               </div>
+            </div>
+          </button>
+
+          {locationOpen && (
+            <div className="location-dropdown">
+
+              {addresses.map((item) => (
+                <button
+                  key={item}
+                  className="location-option"
+                  onClick={() => {
+                    setAddress(item);
+                    setLocationOpen(false);
+                  }}
+                >
+                  <MapPin size={15} />
+                  {item}
+                </button>
+              ))}
+
+            </div>
+          )}
+        </div>
+
+        {/* Search */}
+
+        <div className="navbar-search">
+
+          <Search size={18} />
+
+          <input
+            type="text"
+            placeholder="Search food..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+          />
+
+        </div>
+
+        {/* Navigation */}
+
+        <nav className="navbar-links">
+
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
+            Home
+          </NavLink>
+
+          <HashLink
+            smooth
+            to="/#explore-menu"
+            className="nav-link"
+          >
+            Menu
+          </HashLink>
+
+          <NavLink
+            to="/myorders"
+            className={({ isActive }) =>
+              isActive
+                ? "nav-link active"
+                : "nav-link"
+            }
+          >
+            My Orders
+          </NavLink>
+
+          <HashLink
+            smooth
+            to="/#app-download"
+            className="nav-link"
+          >
+            Mobile App
+          </HashLink>
+
+          <HashLink
+            smooth
+            to="/#footer"
+            className="nav-link"
+          >
+            Contact
+          </HashLink>
+
+        </nav>
+
+                {/* Desktop Actions */}
+
+        <div className="navbar-actions">
+
+          {!token ? (
+
+            <button
+              className="login-btn"
+              onClick={() => setShowLogin(true)}
+            >
+              <User size={18} />
+              Login
             </button>
 
-            {locationOpen && (
-              <div className="location-dropdown">
-                {addresses.map((item) => (
-                  <button
-                    key={item}
-                    className="location-option"
-                    onClick={() => {
-                      setAddress(item);
-                      setLocationOpen(false);
-                    }}
+          ) : (
+
+            <div className="navbar-profile">
+
+              <img
+                src={assets.profile_icon}
+                alt="Profile"
+                className="profile-icon"
+              />
+
+              <ul className="profile-dropdown">
+
+                <li>
+
+                  <NavLink
+                    to="/myorders"
+                    className="dropdown-link"
                   >
-                    <MapPin size={16} />
-                    {item}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Search */}
-
-          <div className="navbar-search">
-            <Search size={18} />
-
-            <input
-              type="text"
-              placeholder="Search restaurants..."
-            />
-          </div>
-
-          {/* Navigation */}
-
-          <nav className="navbar-links">
-            <Link
-              to="/"
-              onClick={() => setMenu("home")}
-              className={
-                menu === "home"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/#explore-menu"
-              onClick={() => setMenu("menu")}
-              className={
-                menu === "menu"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Menu
-            </Link>
-            <Link to="/myorders" className="navbar-myorders">
-              <span>My Orders</span>
-            </Link>
-            <Link
-              to="/#app-download"
-              onClick={() => setMenu("app")}
-              className={
-                menu === "app"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Mobile App
-            </Link>
-
-            <Link
-              to="/#footer"
-              onClick={() => setMenu("contact")}
-              className={
-                menu === "contact"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Contact
-            </Link>
-          </nav>
-
-          {/* Desktop Actions */}
-
-          <div className="navbar-actions">
-            {!token ? (
-              <button
-                className="login-btn"
-                onClick={() => setShowLogin(true)}
-              >
-                <User size={17} />
-                Login
-              </button>
-            ) : (
-              <div className="navbar-profile">
-                <img
-                  src={assets.profile_icon}
-                  alt="Profile"
-                />
-
-                <ul className="profile-dropdown">
-                  <li>
                     <img
                       src={assets.bag_icon}
                       alt=""
                     />
-                    Orders
-                  </li>
+                    My Orders
+                  </NavLink>
 
-                  <hr />
+                </li>
 
-                  <li onClick={logout}>
-                    <img
-                      src={assets.logout_icon}
-                      alt=""
-                    />
-                    Logout
-                  </li>
-                </ul>
-              </div>
-            )}
+                <hr />
 
-            <Link
-              to="/cart"
-              className="cart-btn"
-            >
-              <ShoppingBag size={18} />
-              Cart
+                <li
+                  onClick={logout}
+                  className="logout-item"
+                >
+                  <img
+                    src={assets.logout_icon}
+                    alt=""
+                  />
 
-              {cartCount > 0 && (
-                <span className="cart-badge">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-          </div>
+                  Logout
+                </li>
 
-          {/* Mobile Toggle */}
+              </ul>
 
-          <button
-            className="mobile-toggle"
-            onClick={() =>
-              setMobileOpen(!mobileOpen)
-            }
-          >
-            {mobileOpen ? (
-              <X size={22} />
-            ) : (
-              <Menu size={22} />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-
-        {mobileOpen && (
-          <div className="mobile-panel">
-            <div className="mobile-search">
-              <Search size={18} />
-              <input placeholder="Search Food..." />
             </div>
 
-            <Link
-              to="/"
-              className="nav-link"
-            >
-              Home
-            </Link>
+          )}
 
-            <Link
-              to="/cart"
-              className="nav-link"
-            >
-              Cart ({cartCount})
-            </Link>
+          {/* Cart */}
 
-            {!token ? (
-              <button
-                className="login-btn"
-                onClick={() => {
-                  setShowLogin(true);
-                  setMobileOpen(false);
-                }}
-              >
-                Login
-              </button>
-            ) : (
-              <>
-                <button className="login-btn">
-                  Orders
-                </button>
+          <NavLink
+            to="/cart"
+            className="cart-btn"
+          >
 
-                <button
-                  className="login-btn"
-                  onClick={logout}
-                >
-                  Logout
-                </button>
-              </>
+            <ShoppingBag size={18} />
+
+            Cart
+
+            {cartCount > 0 && (
+
+              <span className="cart-badge">
+
+                {cartCount}
+
+              </span>
+
             )}
+
+          </NavLink>
+
+        </div>
+
+        {/* Mobile Toggle */}
+
+        <button
+          className="mobile-toggle"
+          onClick={() =>
+            setMobileOpen(!mobileOpen)
+          }
+        >
+          {mobileOpen ? (
+            <X size={24} />
+          ) : (
+            <Menu size={24} />
+          )}
+        </button>
+
+      </div>
+
+      {/* Mobile Menu */}
+
+      {mobileOpen && (
+
+        <div className="mobile-panel">
+
+          <div className="mobile-search">
+
+            <Search size={18} />
+
+            <input
+              placeholder="Search Food..."
+              value={search}
+              onChange={(e) =>
+                setSearch(e.target.value)
+              }
+            />
+
           </div>
-        )}
-      </header>
-    </>
+
+          <NavLink
+            to="/"
+            className="mobile-link"
+            onClick={() =>
+              setMobileOpen(false)
+            }
+          >
+            Home
+          </NavLink>
+
+          <HashLink
+            smooth
+            to="/#explore-menu"
+            className="mobile-link"
+            onClick={() =>
+              setMobileOpen(false)
+            }
+          >
+            Menu
+          </HashLink>
+
+          <NavLink
+            to="/cart"
+            className="mobile-link"
+            onClick={() =>
+              setMobileOpen(false)
+            }
+          >
+            Cart ({cartCount})
+          </NavLink>
+
+          {token && (
+
+            <NavLink
+              to="/myorders"
+              className="mobile-link"
+              onClick={() =>
+                setMobileOpen(false)
+              }
+            >
+              My Orders
+            </NavLink>
+
+          )}
+
+          <HashLink
+            smooth
+            to="/#app-download"
+            className="mobile-link"
+            onClick={() =>
+              setMobileOpen(false)
+            }
+          >
+            Mobile App
+          </HashLink>
+
+          <HashLink
+            smooth
+            to="/#footer"
+            className="mobile-link"
+            onClick={() =>
+              setMobileOpen(false)
+            }
+          >
+            Contact
+          </HashLink>
+
+          {!token ? (
+
+            <button
+              className="login-btn mobile-login"
+              onClick={() => {
+                setShowLogin(true);
+                setMobileOpen(false);
+              }}
+            >
+              Login
+            </button>
+
+          ) : (
+
+            <button
+              className="login-btn mobile-login"
+              onClick={logout}
+            >
+              Logout
+            </button>
+
+          )}
+
+        </div>
+
+      )}
+
+    </header>
   );
 }

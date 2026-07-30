@@ -1,609 +1,79 @@
-/* .promo-strip {
-  background: var(--color-charcoal);
-  color: var(--color-saffron);
-  font-size: 12px;
-  font-weight: 600;
-  text-align: center;
-  padding: 6px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.navbar {
-  background: var(--color-cream);
-  border-bottom: 1px solid var(--color-border);
-  position: sticky;
-  top: 0;
-  z-index: 40;
-}
-
-.navbar-inner {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 64px;
-}
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.navbar-logo-badge {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--color-chili);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s;
-}
-
-.navbar-logo:hover .navbar-logo-badge {
-  transform: rotate(-6deg);
-}
-
-.navbar-logo-text {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--color-charcoal);
-}
-
-.navbar-location {
-  position: relative;
-}
-
-.location-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  padding: 8px 12px 8px 8px;
-  border-radius: 8px;
-}
-
-.location-btn:hover {
-  background: var(--color-cream-deep);
-}
-
-.pulse-dot {
-  position: relative;
-  display: inline-flex;
-  width: 10px;
-  height: 10px;
-  flex-shrink: 0;
-}
-
-.pulse-ping {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--color-chili);
-  opacity: 0.6;
-  animation: ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-.pulse-core {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-chili);
-}
-
-@keyframes ping {
-  75%, 100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-}
-
-.location-text {
-  text-align: left;
-  line-height: 1.2;
-}
-
-.location-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-muted);
-  font-weight: 700;
-}
-
-.location-value {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-charcoal);
-  max-width: 160px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.chevron {
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-
-.chevron.open {
-  transform: rotate(180deg);
-}
-
-.location-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 8px;
-  width: 280px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-card-hover);
-  border: 1px solid var(--color-border);
-  padding: 8px 0;
-}
-
-.location-option {
-  width: 100%;
-  text-align: left;
-  padding: 10px 16px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: transparent;
-  color: var(--color-charcoal);
-}
-
-.location-option:hover {
-  background: var(--color-cream-deep);
-}
-
-.location-option-cta {
-  color: var(--color-chili);
-  font-weight: 600;
-  border-top: 1px solid var(--color-border);
-  margin-top: 4px;
-  padding-top: 10px;
-}
-
-.navbar-search {
-  display: none;
-  align-items: center;
-  flex: 1;
-  max-width: 400px;
-  background: white;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  gap: 8px;
-}
-
-.navbar-search input {
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 14px;
-  width: 100%;
-  color: var(--color-charcoal);
-}
-
-.muted-icon {
-  color: var(--color-muted);
-  flex-shrink: 0;
-}
-
-.navbar-links {
-  display: none;
-  align-items: center;
-  gap: 4px;
-}
-
-.nav-link {
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-  color: var(--color-charcoal-soft);
-}
-
-.nav-link:hover {
-  background: var(--color-cream-deep);
-  color: var(--color-charcoal);
-}
-
-.nav-link.active {
-  color: var(--color-chili);
-  border-bottom: 2px solid var(--color-chili);
-}
-
-.navbar-actions {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.login-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  background: transparent;
-  border-radius: 8px;
-  color: var(--color-charcoal);
-}
-
-.login-btn:hover {
-  background: var(--color-cream-deep);
-}
-
-.login-btn.outline {
-  border: 1px solid var(--color-border);
-  flex: 1;
-  justify-content: center;
-}
-
-.cart-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--color-charcoal);
-  color: var(--color-cream);
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.cart-btn:hover {
-  background: #3d3126;
-}
-
-.cart-btn.full {
-  flex: 1;
-  justify-content: center;
-}
-
-.cart-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: var(--color-chili);
-  color: white;
-  font-size: 10px;
-  font-weight: 700;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-toggle {
-  display: flex;
-  background: transparent;
-  padding: 8px;
-  color: var(--color-charcoal);
-  margin-left: auto;
-}
-
-.mobile-panel {
-  border-top: 1px solid var(--color-border);
-  background: var(--color-cream);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.mobile-location,
-.mobile-search {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: white;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 10px 12px;
-}
-
-.mobile-search input {
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 14px;
-  width: 100%;
-}
-
-.mobile-location span:first-of-type {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.mobile-location svg:last-child {
-  margin-left: auto;
-}
-
-.mobile-links {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.mobile-buttons {
-  display: flex;
-  gap: 8px;
-  padding-top: 4px;
-}
-
-@media (min-width: 768px) {
-  .navbar-location {
-    display: block;
-  }
-  .navbar-links,
-  .navbar-actions {
-    display: flex;
-  }
-  .mobile-toggle {
-    display: none;
-  }
-}
-
-@media (min-width: 1024px) {
-  .navbar-search {
-    display: flex;
-  }
-} */
 
 /* ===========================
-   Navbar Brand
+   NAVBAR
 =========================== */
 
-/* .navbar-brand{
+.navbar{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    background:#ffffff;
+    z-index:1000;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+}
+
+.app-container{
+    width:92%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.navbar-inner{
     display:flex;
     align-items:center;
-    gap:12px;
+    justify-content:space-between;
+    height:82px;
+    gap:25px;
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.navbar-brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
     text-decoration:none;
     flex-shrink:0;
 }
 
 .navbar-logo{
-    width:52px;
-    height:52px;
+    width:58px;
+    height:58px;
     object-fit:contain;
-    transition:.3s;
-}
-
-.navbar-logo:hover{
-    transform:scale(1.08) rotate(-5deg);
 }
 
 .navbar-logo-text{
-    font-size:28px;
+    font-size:30px;
     font-weight:800;
-    color:#fc8019;
+    color:#ff5200;
     line-height:1;
+    letter-spacing:.5px;
 }
 
 .navbar-logo-subtitle{
-    font-size:12px;
     color:#777;
-    margin-top:2px;
-    letter-spacing:1px;
+    font-size:13px;
+    margin-top:3px;
 }
 
 /* ===========================
-   Search Box
+   LOCATION
 =========================== */
-
-/* .navbar-search{
-    display:none;
-    align-items:center;
-    flex:1;
-    max-width:430px;
-    background:#fff;
-    border-radius:40px;
-    border:1px solid #eee;
-    padding:12px 18px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.navbar-search input{
-    border:none;
-    outline:none;
-    width:100%;
-    background:transparent;
-    font-size:14px;
-}
-
-/* ===========================
-   Buttons
-=========================== */
-
-/* .login-btn{
-    border:1px solid #fc8019;
-    color:#fc8019;
-    background:white;
-    padding:10px 18px;
-    border-radius:30px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.login-btn:hover{
-    background:#fc8019;
-    color:white;
-}
-
-.cart-btn{
-    background:#fc8019;
-    color:white;
-    padding:11px 18px;
-    border-radius:30px;
-    text-decoration:none;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    position:relative;
-    transition:.3s;
-}
-
-.cart-btn:hover{
-    background:#e66f10;
-}
-
-.cart-badge{
-    position:absolute;
-    top:-8px;
-    right:-8px;
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:red;
-    color:white;
-    font-size:11px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-/* ===========================
-   Navbar Links
-=========================== 
-
-.nav-link{
-    color:#444;
-    text-decoration:none;
-    font-weight:600;
-    padding:8px 14px;
-    transition:.3s;
-}
-
-.nav-link:hover{
-    color:#fc8019;
-}
-
-.nav-link.active{
-    color:#fc8019;
-    border-bottom:3px solid #fc8019;
-}*/
-
-/* ===========================
-   Responsive
-=========================== 
-
-@media(max-width:768px){
-
-    .navbar-logo-text{
-        font-size:22px;
-    }
-
-    .navbar-logo-subtitle{
-        display:none;
-    }
-
-}  */
-
-
-/* =========================
-   Top Offer Strip
-========================= */
-
-.promo-strip{
-    background:#2b231c;
-    color:#ffb020;
-    height:36px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    font-size:14px;
-    font-weight:600;
-}
-
-/* =========================
-   Navbar
-========================= */
-
-.navbar{
-    background:#fff;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 2px 15px rgba(0,0,0,.08);
-}
-
-.navbar-inner{
-    height:85px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-/* =========================
-   Logo
-========================= */
-
-.navbar-brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-}
-
-.navbar-logo{
-    width:55px;
-    transition:.3s;
-}
-
-.navbar-logo:hover{
-    transform:rotate(-8deg) scale(1.08);
-}
-
-.navbar-logo-text{
-    color:#fc8019;
-    font-size:25px;
-    font-weight:800;
-    margin:0;
-}
-
-.navbar-logo-subtitle{
-    font-size:12px;
-    color:#777;
-    margin-top:2px;
-}
-
-/* =========================
-   Location
-========================= */
 
 .navbar-location{
     position:relative;
+    flex-shrink:0;
 }
 
 .location-btn{
-    background:#fff7ef;
-    border:none;
     display:flex;
     align-items:center;
     gap:10px;
-    padding:10px 16px;
-    border-radius:15px;
+    border:none;
+    background:transparent;
     cursor:pointer;
 }
 
@@ -623,6 +93,7 @@
     align-items:center;
     gap:5px;
     font-weight:600;
+    color:#222;
 }
 
 .rotate{
@@ -634,241 +105,928 @@
     position:absolute;
     top:65px;
     left:0;
-    width:260px;
+    width:240px;
     background:white;
-    border-radius:15px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    animation:fadeDown .25s ease;
 }
 
 .location-option{
     width:100%;
-    border:none;
-    background:white;
-    padding:14px;
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
+    padding:14px 18px;
+    border:none;
+    background:white;
     cursor:pointer;
+    transition:.25s;
+    font-size:15px;
 }
 
 .location-option:hover{
-    background:#f8f8f8;
+    background:#fff3ed;
 }
 
-/* =========================
-   Search
-========================= */
+/* ===========================
+   SEARCH BAR
+=========================== */
 
 .navbar-search{
     flex:1;
+    max-width:420px;
     display:flex;
     align-items:center;
-    background:#f5f5f5;
-    border-radius:40px;
+    gap:12px;
+    background:#f7f7f7;
+    border:1px solid transparent;
+    border-radius:50px;
     padding:12px 18px;
-    max-width:420px;
+    transition:all .3s ease;
+}
+
+.navbar-search:hover{
+    background:#fff;
+    border-color:#ff5200;
+}
+
+.navbar-search:focus-within{
+    background:#fff;
+    border-color:#ff5200;
+    box-shadow:0 0 0 4px rgba(255,82,0,.12);
+}
+
+.navbar-search svg{
+    color:#777;
+    flex-shrink:0;
 }
 
 .navbar-search input{
-    width:100%;
+    flex:1;
     border:none;
-    outline:none;
     background:transparent;
-    margin-left:10px;
+    outline:none;
+    font-size:15px;
+    color:#222;
 }
 
-/* =========================
-   Links
-========================= */
+.navbar-search input::placeholder{
+    color:#999;
+}
+
+
+/* ===========================
+   NAVIGATION
+=========================== */
 
 .navbar-links{
     display:flex;
-    gap:10px;
+    align-items:center;
+    gap:30px;
 }
 
 .nav-link{
+    position:relative;
     text-decoration:none;
     color:#444;
+    font-size:15px;
     font-weight:600;
+    transition:.3s;
+    padding:4px 0;
 }
 
 .nav-link:hover{
-    color:#fc8019;
+    color:#ff5200;
 }
 
 .nav-link.active{
-    color:#fc8019;
+    color:#ff5200;
 }
 
-/* =========================
-   Buttons
-========================= */
+.nav-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:3px;
+    background:#ff5200;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.nav-link:hover::after{
+    width:100%;
+}
+
+.nav-link.active::after{
+    width:100%;
+}
+
+
+/* ===========================
+   MY ORDERS
+=========================== */
+
+.navbar-myorders{
+    text-decoration:none;
+    color:#444;
+    font-weight:600;
+    transition:.3s;
+}
+
+.navbar-myorders:hover{
+    color:#ff5200;
+}
+
+
+/* ===========================
+   NAVBAR ACTIONS
+=========================== */
 
 .navbar-actions{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:18px;
 }
+
+
+/* ===========================
+   LOGIN BUTTON
+=========================== */
 
 .login-btn{
     display:flex;
     align-items:center;
-    gap:6px;
-    border:2px solid #fc8019;
-    background:white;
-    color:#fc8019;
-    padding:10px 18px;
-    border-radius:30px;
+    justify-content:center;
+    gap:8px;
+
+    padding:11px 22px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#ff5200;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
 .login-btn:hover{
-    background:#fc8019;
-    color:white;
-}
-.navbar-profile {
-  position: relative;
-  cursor: pointer;
+    background:#e64a00;
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(255,82,0,.28);
 }
 
-.navbar-profile img {
-  width: 38px;
-  border-radius: 50%;
-}
+/* ===========================
+   CART BUTTON
+=========================== */
 
-.profile-dropdown {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  min-width: 180px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  list-style: none;
-  padding: 10px;
-  display: none;
-  z-index: 1000;
-}
-
-.navbar-profile:hover .profile-dropdown {
-  display: block;
-}
-
-.profile-dropdown li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.profile-dropdown li:hover {
-  background: #f5f5f5;
-  color: tomato;
-}
-
-.profile-dropdown li img {
-  width: 18px;
-}
-
-.profile-dropdown hr {
-  border: none;
-  border-top: 1px solid #eee;
-  margin: 8px 0;
-}
 .cart-btn{
     position:relative;
     display:flex;
     align-items:center;
+    justify-content:center;
     gap:8px;
+
     text-decoration:none;
-    background:#fc8019;
-    color:white;
-    padding:11px 18px;
-    border-radius:30px;
+
+    color:#333;
+
+    font-size:15px;
+    font-weight:600;
+
+    padding:11px 20px;
+
+    border-radius:50px;
+
+    background:#f8f8f8;
+
+    transition:all .3s ease;
 }
 
+.cart-btn:hover{
+    background:#fff3ed;
+    color:#ff5200;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(255,82,0,.15);
+}
+
+
+/* ===========================
+   CART BADGE
+=========================== */
+
 .cart-badge{
+
     position:absolute;
-    top:-6px;
-    right:-6px;
-    width:20px;
-    height:20px;
+
+    top:-7px;
+    right:-7px;
+
+    min-width:22px;
+    height:22px;
+
     border-radius:50%;
-    background:red;
-    color:white;
+
+    background:#ff5200;
+
+    color:#fff;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:11px;
+
+    font-size:12px;
+    font-weight:700;
+
+    border:2px solid #fff;
+
+    animation:pulse 1.5s infinite;
 }
 
-/* =========================
-   Mobile
-========================= */
+
+/* ===========================
+   PROFILE
+=========================== */
+
+.navbar-profile{
+
+    position:relative;
+
+    cursor:pointer;
+
+}
+
+.profile-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #eee;
+
+    transition:.3s;
+}
+
+.profile-icon:hover{
+
+    border-color:#ff5200;
+
+    transform:scale(1.05);
+
+}
+
+
+/* ===========================
+   PROFILE DROPDOWN
+=========================== */
+
+.profile-dropdown{
+
+    position:absolute;
+
+    top:60px;
+    right:0;
+
+    width:220px;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:10px 0;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+
+    display:none;
+
+    flex-direction:column;
+
+    z-index:100;
+
+    animation:fadeDown .25s ease;
+}
+
+.navbar-profile:hover .profile-dropdown{
+
+    display:flex;
+
+}
+
+.profile-dropdown li{
+
+    list-style:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.profile-dropdown li:hover{
+
+    background:#fff5ef;
+
+}
+
+.profile-dropdown li img{
+
+    width:20px;
+    height:20px;
+}
+
+.profile-dropdown hr{
+
+    border:none;
+
+    border-top:1px solid #eee;
+
+    margin:6px 0;
+
+}
+
+
+/* ===========================
+   DROPDOWN LINK
+=========================== */
+
+.dropdown-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    width:100%;
+
+    font-weight:500;
+
+}
+
+.dropdown-link:hover{
+
+    color:#ff5200;
+
+}
+
+
+/* ===========================
+   LOGOUT
+=========================== */
+
+.logout-item{
+
+    color:#d62828;
+
+    font-weight:600;
+
+}
+
+.logout-item:hover{
+
+    color:#ff5200;
+
+}
+
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.15);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   MOBILE TOGGLE
+=========================== */
 
 .mobile-toggle{
     display:none;
-    background:none;
+    width:46px;
+    height:46px;
     border:none;
+    outline:none;
+    background:#fff3ed;
+    border-radius:12px;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
 }
+
+.mobile-toggle svg{
+    color:#ff5200;
+}
+
+.mobile-toggle:hover{
+    background:#ff5200;
+}
+
+.mobile-toggle:hover svg{
+    color:#fff;
+}
+
+
+/* ===========================
+   MOBILE PANEL
+=========================== */
 
 .mobile-panel{
-    display:none;
+
+    position:absolute;
+
+    top:82px;
+    left:0;
+
+    width:100%;
+
+    background:#ffffff;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    padding:25px;
+
+    animation:mobileMenu .35s ease;
+
+    z-index:999;
+
 }
 
+
+/* ===========================
+   MOBILE SEARCH
+=========================== */
+
 .mobile-search{
+
     display:flex;
+
     align-items:center;
-    background:#f5f5f5;
-    border-radius:10px;
-    padding:10px;
-    margin-bottom:15px;
+
+    gap:12px;
+
+    padding:12px 16px;
+
+    background:#f7f7f7;
+
+    border-radius:50px;
+
+    margin-bottom:12px;
+
+}
+
+.mobile-search svg{
+
+    color:#888;
+
 }
 
 .mobile-search input{
-    width:100%;
+
+    flex:1;
+
     border:none;
-    background:none;
+
+    background:transparent;
+
     outline:none;
-    margin-left:10px;
-}
-.navbar-myorders {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #2b231c;
-  text-decoration: none;
+
+    font-size:15px;
+
 }
 
-.navbar-myorders:hover {
-  color: #ff5200;
-}
-@media(max-width:992px){
+.mobile-search input::placeholder{
 
-    .navbar-search,
-    .navbar-links,
-    .navbar-actions,
-    .navbar-myorders,
+    color:#999;
+
+}
+
+
+/* ===========================
+   MOBILE LINKS
+=========================== */
+
+.mobile-link{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:15px 18px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.mobile-link:hover{
+
+    background:#fff3ed;
+
+    color:#ff5200;
+
+}
+
+
+/* ===========================
+   MOBILE LOGIN BUTTON
+=========================== */
+
+.mobile-login{
+
+    margin-top:10px;
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+
+/* ===========================
+   MOBILE PROFILE
+=========================== */
+
+.mobile-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:10px;
+
+    margin-bottom:8px;
+
+}
+
+.mobile-profile img{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.mobile-profile span{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+
+/* ===========================
+   MOBILE MENU ANIMATION
+=========================== */
+
+@keyframes mobileMenu{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+    .navbar-inner{
+        gap:18px;
+    }
+
+    .navbar-links{
+        gap:20px;
+    }
+
+    .navbar-search{
+        max-width:300px;
+    }
+
+    .navbar-logo-text{
+        font-size:26px;
+    }
+
+}
+
+
+/* Tablet */
+
+@media (max-width:992px){
+
     .navbar-location{
         display:none;
     }
 
+    .navbar-search{
+        max-width:250px;
+    }
+
+    .navbar-links{
+        gap:16px;
+    }
+
+    .nav-link{
+        font-size:14px;
+    }
+
+    .login-btn{
+        padding:10px 18px;
+    }
+
+}
+
+
+/* Large Mobile */
+
+@media (max-width:768px){
+
+    .navbar-inner{
+        height:72px;
+    }
+
+    .navbar-links{
+        display:none;
+    }
+
+    .navbar-search{
+        display:none;
+    }
+
+    .navbar-location{
+        display:none;
+    }
+
+    .navbar-actions{
+        display:none;
+    }
+
     .mobile-toggle{
-        display:block;
+        display:flex;
+    }
+
+    .navbar-logo{
+        width:48px;
+        height:48px;
+    }
+
+    .navbar-logo-text{
+        font-size:24px;
+    }
+
+    .navbar-logo-subtitle{
+        font-size:11px;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width:576px){
+
+    .app-container{
+        width:95%;
+    }
+
+    .navbar-inner{
+        height:68px;
+    }
+
+    .navbar-logo{
+        width:42px;
+        height:42px;
+    }
+
+    .navbar-logo-text{
+        font-size:21px;
+    }
+
+    .navbar-logo-subtitle{
+        display:none;
     }
 
     .mobile-panel{
-        display:flex;
-        flex-direction:column;
-        padding:20px;
-        gap:15px;
-        background:white;
+
+        top:68px;
+
+        padding:18px;
+
     }
+
+    .mobile-search{
+
+        padding:10px 14px;
+
+    }
+
+    .mobile-link{
+
+        padding:14px;
+
+        font-size:15px;
+
+    }
+
+}
+
+
+/* Small Phones */
+
+@media (max-width:400px){
+
+    .navbar-logo-text{
+        font-size:18px;
+    }
+
+    .navbar-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .mobile-toggle{
+
+        width:42px;
+        height:42px;
+
+    }
+
+}
+
+
+/* =====================================
+   SMOOTH TRANSITIONS
+===================================== */
+
+*{
+
+    transition:
+    background .25s ease,
+    color .25s ease,
+    border .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+
+}
+
+
+/* =====================================
+   SCROLLBAR
+===================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#ff5200;
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f2f2f2;
+
+}
+
+
+button{
+
+    font-family:inherit;
+
+}
+
+
+/* =====================================
+   REMOVE INPUT OUTLINE
+===================================== */
+
+input{
+
+    font-family:inherit;
+
+}
+
+
+/* =====================================
+   IMAGE FIX
+===================================== */
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
 }
 
