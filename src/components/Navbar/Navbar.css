@@ -2,64 +2,57 @@
 /* ===========================
    NAVBAR
 =========================== */
-
 .navbar{
+    height:80px;
+    padding:0 45px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
     position:sticky;
     top:0;
-    left:0;
-    width:100%;
-    background:#ffffff;
     z-index:1000;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
 }
-
 .app-container{
     width:99%;
     max-width:1300px;
     margin:auto;
 }
-
 .navbar-inner{
+    width:100%;
+    max-width:1450px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    height:82px;
-    gap:25px;
+    gap:30px;
 }
 
-/* ===========================
-   LOGO
-=========================== */
-
+/* //LOGO */
 .navbar-brand{
     display:flex;
     align-items:center;
-    gap:14px;
-    text-decoration:none;
+    gap:10px;
     flex-shrink:0;
 }
 
 .navbar-logo{
-    width:58px;
-    height:58px;
-    object-fit:contain;
+    width:42px;
 }
 
 .navbar-logo-text{
-    font-size:55px;
-    font-weight:400;
-    color:#ff5200;
+    font-size:32px;
+    font-weight:700;
+    line-height:1;
 }
 
 .navbar-logo-subtitle{
+    font-size:13px;
     color:#777;
-    font-size:19px;
-    margin-top:1.5px;
+    margin-top:3px;
 }
 
-/* ===========================
-   LOCATION
-=========================== */
+   /* //LOCATION/ */
 
 .navbar-location{
     position:relative;
@@ -71,6 +64,8 @@
     align-items:center;
     gap:10px;
     border:none;
+    padding:10px 16px;
+    border-radius:14px;
     background:transparent;
     cursor:pointer;
 }
@@ -82,14 +77,15 @@
 }
 
 .location-label{
-    font-size:11px;
     color:#888;
+    font-size:12px;
 }
 
 .location-value{
     display:flex;
     align-items:center;
     gap:5px;
+    font-size:15px;
     font-weight:600;
     color:#222;
 }
@@ -128,9 +124,7 @@
     background:#fff3ed;
 }
 
-/* ===========================
-   SEARCH BAR
-=========================== */
+   /* //SEARCH BAR */
 
 .navbar-search{
     flex:1;
@@ -138,6 +132,10 @@
     display:flex;
     align-items:center;
     gap:12px;
+    width:300px;
+    height:48px;
+    border-radius:24px;
+    padding:0 18px;
     background:#f7f7f7;
     border:1px solid transparent;
     border-radius:50px;
@@ -174,23 +172,20 @@
     color:#999;
 }
 
-
-/* ===========================
-   NAVIGATION
-=========================== */
+   /* //NAVIGATION */
 
 .navbar-links{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:34px;
 }
 
 .nav-link{
     position:relative;
     text-decoration:none;
     color:#444;
-    font-size:15px;
-    font-weight:600;
+    font-size:17px;
+    font-weight:500;
     transition:.3s;
     padding:4px 0;
 }
@@ -223,26 +218,21 @@
     width:100%;
 }
 
-
-/* ===========================
-   MY ORDERS
-=========================== */
+   /* //MY ORDERS */
 
 .navbar-myorders{
     text-decoration:none;
     color:#444;
     font-weight:600;
     transition:.3s;
+    white-space:nowrap;
 }
 
 .navbar-myorders:hover{
     color:#ff5200;
 }
 
-
-/* ===========================
-   NAVBAR ACTIONS
-=========================== */
+   /* //NAVBAR ACTIONS */
 
 .navbar-actions{
     display:flex;
@@ -250,33 +240,23 @@
     gap:18px;
 }
 
-
-/* ===========================
-   LOGIN BUTTON
-=========================== */
+   /* //LOGIN BUTTON */
 
 .login-btn{
+     height:48px;
+    padding:0 24px;
+    border-radius:24px;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:8px;
-
-    padding:11px 22px;
-
     border:none;
-
     border-radius:50px;
-
     background:#ff5200;
-
     color:#fff;
-
-    font-size:15px;
-
+    font-size:14px;
     font-weight:600;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
@@ -286,9 +266,7 @@
     box-shadow:0 8px 20px rgba(255,82,0,.28);
 }
 
-/* ===========================
-   CART BUTTON
-=========================== */
+   /* CART BUTTON */
 
 .cart-btn{
     position:relative;
@@ -296,21 +274,15 @@
     align-items:center;
     justify-content:center;
     gap:8px;
-
     text-decoration:none;
-
     color:#333;
-
+    background:#f8f8f8;
+    transition:all .3s ease;
+     height:48px;
+    padding:0 22px;
+    border-radius:24px;
     font-size:15px;
     font-weight:600;
-
-    padding:11px 20px;
-
-    border-radius:50px;
-
-    background:#f8f8f8;
-
-    transition:all .3s ease;
 }
 
 .cart-btn:hover{
@@ -320,36 +292,24 @@
     box-shadow:0 10px 25px rgba(255,82,0,.15);
 }
 
-
-/* ===========================
-   CART BADGE
-=========================== */
+   /* CART BADGE */
 
 .cart-badge{
-
     position:absolute;
-
     top:-7px;
     right:-7px;
-
     min-width:22px;
-    height:22px;
-
     border-radius:50%;
-
-    background:#ff5200;
-
+   background:#ff5200;
     color:#fff;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
-    font-size:12px;
     font-weight:700;
-
+    width:20px;
+    height:20px;
+    font-size:11px;
     border:2px solid #fff;
-
     animation:pulse 1.5s infinite;
 }
 
