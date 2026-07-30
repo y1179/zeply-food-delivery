@@ -112,16 +112,203 @@
 // export default LoginPopup;
 
 
-import { useState } from "react";
+// import { useState } from "react";
+// import { X } from "lucide-react";
+// import axios from "axios";
+// import "./LoginPopup.css";
+// import { useContext } from "react";
+// import { StoreContext } from "../../context/StoreContext";
+
+// const LoginPopup = ({ setShowLogin }) => {
+//   const url = import.meta.env.VITE_API_URL; // Change if needed
+//   const { setToken } = useContext(StoreContext);
+//   const [currentState, setCurrentState] = useState("Login");
+
+//   const [data, setData] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//   });
+
+//   const onChangeHandler = (event) => {
+//     const { name, value } = event.target;
+
+//     setData((prev) => ({
+//       ...prev,
+//       [name]: value,
+//     }));
+//   };
+
+//   const onSubmitHandler = async (event) => {
+//     event.preventDefault();
+
+//     try {
+//       let endpoint = "/api/user/login";
+
+//       if (currentState === "Sign Up") {
+//         endpoint = "/api/user/register";
+//       }
+
+//       const response = await axios.post(url + endpoint, data);
+
+//       if (response.data.success) {
+//         localStorage.setItem("token", response.data.token);
+
+//         if (response.data.success) {
+
+//           if (currentState === "Login") {
+
+//             localStorage.setItem("token", response.data.token);
+//             setToken(response.data.token);
+//             setShowLogin(false);
+
+//             alert("Login Successful");
+
+//           } else {
+
+//             alert("Registration Successful! Please login.");
+
+//             setCurrentState("Login");
+
+//             setData({
+//               name: "",
+//               email: "",
+//               password: "",
+//             });
+
+//           }
+
+//         }
+//         alert(
+//           currentState === "Login"
+//             ? "Login Successful"
+//             : "Registration Successful"
+//         );
+
+//         setShowLogin(false);
+//       } else {
+//         alert(response.data.message);
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       alert("Something went wrong.");
+//     }
+//   };
+
+//   const switchMode = () => {
+//     setCurrentState((prev) =>
+//       prev === "Login" ? "Sign Up" : "Login"
+//     );
+
+//     setData({
+//       name: "",
+//       email: "",
+//       password: "",
+//     });
+//   };
+
+//   return (
+//     <div
+//       className="login-overlay"
+//       onClick={() => setShowLogin(false)}
+//     >
+//       <div
+//         className="login-box"
+//         onClick={(e) => e.stopPropagation()}
+//       >
+//         <div className="login-box-header">
+//           <h2>{currentState}</h2>
+
+//           <X
+//             className="login-close"
+//             size={22}
+//             onClick={() => setShowLogin(false)}
+//           />
+//         </div>
+
+//         <form
+//           className="login-form"
+//           onSubmit={onSubmitHandler}
+//         >
+//           {currentState === "Sign Up" && (
+//             <input
+//               type="text"
+//               name="name"
+//               placeholder="Full Name"
+//               value={data.name}
+//               onChange={onChangeHandler}
+//               required
+//             />
+//           )}
+
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="Email"
+//             value={data.email}
+//             onChange={onChangeHandler}
+//             required
+//           />
+
+//           <input
+//             type="password"
+//             name="password"
+//             placeholder="Password"
+//             value={data.password}
+//             onChange={onChangeHandler}
+//             required
+//           />
+
+//           <button type="submit">
+//             {currentState === "Login"
+//               ? "Login"
+//               : "Create Account"}
+//           </button>
+//         </form>
+
+//         {currentState === "Sign Up" && (
+//           <div className="login-checkbox">
+//             <input type="checkbox" required />
+//             <p>I agree to the Terms & Conditions.</p>
+//           </div>
+//         )}
+
+//         <div className="login-switch">
+//           {currentState === "Login" ? (
+//             <p>
+//               New here?
+//               <span onClick={switchMode}>
+//                 {" "}Create Account
+//               </span>
+//             </p>
+//           ) : (
+//             <p>
+//               Already have an account?
+//               <span onClick={switchMode}>
+//                 {" "}Login
+//               </span>
+//             </p>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default LoginPopup;
+
+
+import { useState, useContext } from "react";
 import { X } from "lucide-react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./LoginPopup.css";
-import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 
 const LoginPopup = ({ setShowLogin }) => {
-  const url = import.meta.env.VITE_API_URL; // Change if needed
+  const url = import.meta.env.VITE_API_URL;
   const { setToken } = useContext(StoreContext);
+
   const [currentState, setCurrentState] = useState("Login");
 
   const [data, setData] = useState({
@@ -130,8 +317,8 @@ const LoginPopup = ({ setShowLogin }) => {
     password: "",
   });
 
-  const onChangeHandler = (event) => {
-    const { name, value } = event.target;
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
 
     setData((prev) => ({
       ...prev,
@@ -139,59 +326,48 @@ const LoginPopup = ({ setShowLogin }) => {
     }));
   };
 
-  const onSubmitHandler = async (event) => {
-    event.preventDefault();
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
 
     try {
-      let endpoint = "/api/user/login";
+      const endpoint =
+        currentState === "Login"
+          ? "/api/user/login"
+          : "/api/user/register";
 
-      if (currentState === "Sign Up") {
-        endpoint = "/api/user/register";
-      }
-
-      const response = await axios.post(url + endpoint, data);
+      const response = await axios.post(`${url}${endpoint}`, data);
 
       if (response.data.success) {
-        localStorage.setItem("token", response.data.token);
+        if (currentState === "Login") {
+          localStorage.setItem("token", response.data.token);
+          setToken(response.data.token);
 
-        if (response.data.success) {
+          toast.success("Login Successful!");
 
-          if (currentState === "Login") {
+          setShowLogin(false);
+        } else {
+          toast.success(
+            "Registration Successful! Please login."
+          );
 
-            localStorage.setItem("token", response.data.token);
-            setToken(response.data.token);
-            setShowLogin(false);
+          setCurrentState("Login");
 
-            alert("Login Successful");
-
-          } else {
-
-            alert("Registration Successful! Please login.");
-
-            setCurrentState("Login");
-
-            setData({
-              name: "",
-              email: "",
-              password: "",
-            });
-
-          }
-
+          setData({
+            name: "",
+            email: "",
+            password: "",
+          });
         }
-        alert(
-          currentState === "Login"
-            ? "Login Successful"
-            : "Registration Successful"
-        );
-
-        setShowLogin(false);
       } else {
-        alert(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.log(error);
-      alert("Something went wrong.");
+
+      toast.error(
+        error.response?.data?.message ||
+          "Something went wrong!"
+      );
     }
   };
 
@@ -278,14 +454,16 @@ const LoginPopup = ({ setShowLogin }) => {
             <p>
               New here?
               <span onClick={switchMode}>
-                {" "}Create Account
+                {" "}
+                Create Account
               </span>
             </p>
           ) : (
             <p>
               Already have an account?
               <span onClick={switchMode}>
-                {" "}Login
+                {" "}
+                Login
               </span>
             </p>
           )}
