@@ -393,7 +393,7 @@ const LoginPopup = ({ setShowLogin }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="login-box-header">
-          <h2>{currentState}</h2>
+          <h2> {currentState === "Login" ? "Login" : "Sign Up"}</h2>
 
           <X
             className="login-close"
